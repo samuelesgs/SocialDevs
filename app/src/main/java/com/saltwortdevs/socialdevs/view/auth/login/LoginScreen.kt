@@ -31,13 +31,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.saltwortdevs.socialdevs.R
 
 @Preview
 @Composable
-fun LoginScreen() {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
+    /*var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }*/
+    val ioState by loginViewModel.uiState.collectAsStateWithLifecycle()
+
     Scaffold { padding ->
         Column(Modifier
             .padding(padding)
@@ -59,20 +63,25 @@ fun LoginScreen() {
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(25),
-                value = email,
+                value = ioState.email,
                 label = {Text("Usuario, correo electrónico o movil")},
-                onValueChange = { email = it }
+                onValueChange = { loginViewModel.onEmailChanged( it) }
                 )
             Spacer(Modifier.height(12.dp))
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(25),
                 label = {Text("Contraseña")},
-                value = password,
-                onValueChange = { email = it }
+                value = ioState.password,
+                onValueChange = { loginViewModel.onPasswordChanged( it) }
             )
             Spacer(Modifier.height(12.dp))
-            Button(modifier = Modifier.fillMaxWidth(), colors = ButtonDefaults.buttonColors(containerColor = Color.Blue), onClick = {},) {
+            Button(
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(containerColor = Color.Blue),
+                onClick = {},
+                enabled = ioState.isLoadingEnabled
+                ) {
                 Text("Iniciar sesión", modifier = Modifier.padding(vertical = 4.dp))
             }
             TextButton({}) {Text("¿Has olvidado la contraseña?")}
