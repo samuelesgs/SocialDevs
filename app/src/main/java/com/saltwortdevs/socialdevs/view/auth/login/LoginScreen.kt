@@ -53,7 +53,12 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
             ,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Español (España)", color = MaterialTheme.colorScheme.onBackground, modifier = Modifier.padding(12.dp))
+            Text(
+                "Español (España)",
+                color = MaterialTheme.colorScheme.onBackground,
+                modifier = Modifier.padding(12.dp),
+                style = MaterialTheme.typography.bodyLarge
+            )
             Spacer(Modifier.weight(1f))
             Image(
                 modifier = Modifier.size(72.dp),
@@ -66,8 +71,12 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(25),
                 value = ioState.email,
-                label = {Text("Usuario, correo electrónico o movil", color = MaterialTheme.colorScheme.onBackground)},
-                onValueChange = { loginViewModel.onEmailChanged( it) }
+                label = {
+                    Text(
+                        "Usuario, correo electrónico o movil",
+                        color = MaterialTheme.colorScheme.onBackground,
+                    )},
+                    onValueChange = { loginViewModel.onEmailChanged( it) }
                 )
             Spacer(Modifier.height(12.dp))
             OutlinedTextField(
@@ -86,7 +95,13 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 ) {
                 Text("Iniciar sesión", color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(vertical = 4.dp))
             }
-            TextButton({}) {Text("¿Has olvidado la contraseña?", color = MaterialTheme.colorScheme.onSurfaceVariant)}
+            TextButton(
+                {}) {
+                Text(
+                    "¿Has olvidado la contraseña?",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    style = MaterialTheme.typography.displayLarge
+                )}
             Spacer(Modifier.weight(1f))
             OutlinedButton(modifier = Modifier.fillMaxWidth(), onClick = {}, colors = ButtonDefaults.outlinedButtonColors(MaterialTheme.colorScheme.primary)) { Text("Crear cuenta nueva", color = MaterialTheme.colorScheme.onPrimary)}
             Icon(
