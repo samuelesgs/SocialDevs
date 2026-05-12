@@ -91,7 +91,8 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 modifier = Modifier.fillMaxWidth(),
                 border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary),
                 onClick = {},
-                enabled = ioState.isLoadingEnabled
+                enabled = ioState.isLoadingEnabled,
+                shape = MaterialTheme.shapes.extraLarge
                 ) {
                 Text("Iniciar sesión", color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(vertical = 4.dp))
             }
