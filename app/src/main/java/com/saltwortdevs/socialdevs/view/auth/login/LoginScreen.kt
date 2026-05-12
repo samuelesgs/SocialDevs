@@ -1,5 +1,6 @@
 package com.saltwortdevs.socialdevs.view.auth.login
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -14,6 +15,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -46,12 +48,12 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
         Column(Modifier
             .padding(padding)
             .fillMaxSize()
-            .background(Color.White)
+            .background(MaterialTheme.colorScheme.background)
             .padding(24.dp)
             ,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Español (España)", color = Color.Gray, modifier = Modifier.padding(12.dp))
+            Text("Español (España)", color = MaterialTheme.colorScheme.onBackground, modifier = Modifier.padding(12.dp))
             Spacer(Modifier.weight(1f))
             Image(
                 modifier = Modifier.size(72.dp),
@@ -64,34 +66,34 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(25),
                 value = ioState.email,
-                label = {Text("Usuario, correo electrónico o movil")},
+                label = {Text("Usuario, correo electrónico o movil", color = MaterialTheme.colorScheme.onBackground)},
                 onValueChange = { loginViewModel.onEmailChanged( it) }
                 )
             Spacer(Modifier.height(12.dp))
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(25),
-                label = {Text("Contraseña")},
+                label = {Text("Contraseña", color = MaterialTheme.colorScheme.onBackground)},
                 value = ioState.password,
                 onValueChange = { loginViewModel.onPasswordChanged( it) }
             )
             Spacer(Modifier.height(12.dp))
             Button(
                 modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(containerColor = Color.Blue),
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary),
                 onClick = {},
                 enabled = ioState.isLoadingEnabled
                 ) {
-                Text("Iniciar sesión", modifier = Modifier.padding(vertical = 4.dp))
+                Text("Iniciar sesión", color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(vertical = 4.dp))
             }
-            TextButton({}) {Text("¿Has olvidado la contraseña?")}
+            TextButton({}) {Text("¿Has olvidado la contraseña?", color = MaterialTheme.colorScheme.onSurfaceVariant)}
             Spacer(Modifier.weight(1f))
-            OutlinedButton(modifier = Modifier.fillMaxWidth(), onClick = {}) { Text("Crear cuenta nueva")}
+            OutlinedButton(modifier = Modifier.fillMaxWidth(), onClick = {}, colors = ButtonDefaults.outlinedButtonColors(MaterialTheme.colorScheme.primary)) { Text("Crear cuenta nueva", color = MaterialTheme.colorScheme.onPrimary)}
             Icon(
                 modifier = Modifier.width(120.dp).padding(vertical = 22.dp),
                 painter = painterResource(R.drawable.ic_meta),
                 contentDescription = "Icono meta",
-                tint = Color.Gray
+                tint = MaterialTheme.colorScheme.onBackground
             )
         }
     }
