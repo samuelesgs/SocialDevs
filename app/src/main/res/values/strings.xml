@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Social Devs</string>
+    <string name="login_screen_header_text_lang_spanish">Español (España)</string>
+    <string name="login_screen_textfield_email">Usuario, Correo electronico o movil</string>
+    <string name="login_screen_button_login">Iniciar sesion</string>
+    <string name="login_screen_button_register">Registrar cuenta</string>
+    <string name="login_screen_textfield_password">Contraseña</string>
+    <string name="login_screen_recover_pasasword">Has olvidado tu contraseña?</string>
+
     <string name="register_screen_title_phone">¿Cual es tu numero de movil?</string>
     <string name="register_screen_title_email">¿Cual es tu correo electronico?</string>
     <string name="register_screen_subtitle_phone">Introduce tu numero de movil</string>

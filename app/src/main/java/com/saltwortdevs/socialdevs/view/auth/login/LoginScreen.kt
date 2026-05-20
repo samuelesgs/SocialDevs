@@ -31,6 +31,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -55,12 +56,12 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
             ,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            InstaText(modifier = Modifier.padding(12.dp),"Español (España)",color = MaterialTheme.colorScheme.onBackground,)
+            InstaText(modifier = Modifier.padding(12.dp), stringResource(R.string.login_screen_header_text_lang_spanish),color = MaterialTheme.colorScheme.onBackground,)
             Spacer(Modifier.weight(1f))
             Image(
                 modifier = Modifier.size(72.dp),
                 painter = painterResource(R.drawable.logo),
-                contentDescription = "Social devs"
+                contentDescription = stringResource(R.string.app_name)
             )
             Spacer(Modifier.weight(1f))
 
@@ -70,7 +71,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 value = ioState.email,
                 label = {
                     InstaText(
-                        text = "Usuario, correo electrónico o movil",
+                        text = stringResource(R.string.login_screen_textfield_email),
                         color = MaterialTheme.colorScheme.onBackground,
                     )},
                     onValueChange = { loginViewModel.onEmailChanged( it) }
@@ -79,16 +80,16 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(25),
-                label = {InstaText(text = "Contraseña", color = MaterialTheme.colorScheme.onBackground)},
+                label = {InstaText(text = stringResource(R.string.login_screen_textfield_password), color = MaterialTheme.colorScheme.onBackground)},
                 value = ioState.password,
                 onValueChange = { loginViewModel.onPasswordChanged( it) }
             )
             Spacer(Modifier.height(12.dp))
-            InstaButton( text = "Iniciar sesión", onClick = {})
+            InstaButton( text = stringResource(R.string.login_screen_button_login), onClick = {})
             TextButton(
                 {}) {
                 InstaText(
-                    text = "¿Has olvidado la contraseña?",
+                    text = stringResource(R.string.login_screen_recover_pasasword),
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )}
             Spacer(Modifier.weight(1f))
@@ -97,7 +98,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 onClick = {},
                 colors = ButtonDefaults.outlinedButtonColors(MaterialTheme.colorScheme.primary)
             ) {
-                InstaText(text = "Crear cuenta nueva", color = MaterialTheme.colorScheme.onPrimary)
+                InstaText(text = stringResource(R.string.login_screen_button_register), color = MaterialTheme.colorScheme.onPrimary)
             }
             Icon(
                 modifier = Modifier.width(120.dp).padding(vertical = 22.dp),
