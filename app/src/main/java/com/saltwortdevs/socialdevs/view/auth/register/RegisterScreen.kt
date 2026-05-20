@@ -1,7 +1,9 @@
 package com.saltwortdevs.socialdevs.view.auth.register
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -27,7 +29,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.saltwortdevs.socialdevs.view.core.components.InstaButton
 
 @Composable
-fun RegisterScreen(registerViewModel : RegisterViewModel = viewModel()) {
+fun RegisterScreen(registerViewModel : RegisterViewModel = viewModel(), navigateBack : () -> Unit) {
     val ioState by registerViewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
     Scaffold (
@@ -35,7 +37,11 @@ fun RegisterScreen(registerViewModel : RegisterViewModel = viewModel()) {
             Icon(
                 imageVector = Icons.Default.ArrowBack,
                 contentDescription = "back",
-                tint = MaterialTheme.colorScheme.onSurfaceVariant
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.clickable{
+                    Log.i("REGISTER_SCREEN", "RegisterScreen: ")
+                    navigateBack()
+                }
             )
         }) { padding ->
         Column(modifier = Modifier
