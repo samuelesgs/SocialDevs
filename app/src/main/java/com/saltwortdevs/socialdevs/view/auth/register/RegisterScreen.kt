@@ -97,7 +97,7 @@ fun RegisterScreen(registerViewModel : RegisterViewModel = viewModel(), navigate
                     },
                     colors = ButtonDefaults.outlinedButtonColors(MaterialTheme.colorScheme.background)
                 ) {
-                    InstaText(text = stringResource(if (ioState.type == 0) R.string.register_screen_button_register_with_email else R.string.register_screen_button_register_with_phone), color = MaterialTheme.colorScheme.onPrimary)
+                    InstaText(text = stringResource(if (ioState.type == 0) R.string.register_screen_button_register_with_email else R.string.register_screen_button_register_with_phone), color = MaterialTheme.colorScheme.onBackground)
                 }
             }
             /*if (ioState.type == 1){

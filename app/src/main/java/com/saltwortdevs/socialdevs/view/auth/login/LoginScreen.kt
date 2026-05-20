@@ -54,11 +54,10 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel(), navigateToRegister
                 contentDescription = stringResource(R.string.app_name)
             )
             Spacer(Modifier.weight(1f))
-
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(25),
                 value = ioState.email,
+                shape = MaterialTheme.shapes.large,
                 label = {
                     InstaText(
                         text = stringResource(R.string.login_screen_textfield_email),
@@ -69,7 +68,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel(), navigateToRegister
             Spacer(Modifier.height(12.dp))
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(25),
+                shape = MaterialTheme.shapes.large,
                 label = {InstaText(text = stringResource(R.string.login_screen_textfield_password), color = MaterialTheme.colorScheme.onBackground)},
                 value = ioState.password,
                 onValueChange = { loginViewModel.onPasswordChanged( it) }

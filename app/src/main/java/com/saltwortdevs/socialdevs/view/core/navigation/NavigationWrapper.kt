@@ -23,7 +23,7 @@ fun NavigationWrapper() {
     ) {
         composable(Screen.Login.route) {
             //RegisterScreen()
-            LoginScreen(navigateToRegister = {navController.navigate(Register)})
+            LoginScreen(navigateToRegister = { navController.navigate(Screen.Register.route) })
         }
         composable(Screen.Register.route) {
             RegisterScreen(navigateBack = {navController.popBackStack()})
