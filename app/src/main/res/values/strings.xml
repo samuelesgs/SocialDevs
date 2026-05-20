@@ -10,6 +10,7 @@
     <string name="register_screen_title_phone">¿Cual es tu numero de movil?</string>
     <string name="register_screen_title_email">¿Cual es tu correo electronico?</string>
     <string name="register_screen_subtitle_phone">Introduce tu numero de movil</string>
+    <string name="register_screen_subtitle_phone_2">Introduce tu numero de movil, Nadie lo vera en tu perfil</string>
     <string name="register_screen_subtitle_email">Introduce tu correo electronico</string>
     <string name="register_screen_body">Puede que recibas notificaciones nuestras</string>
     <string name="register_screen_textfield_register_phone">Numero de movil</string>

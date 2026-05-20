@@ -29,6 +29,6 @@ fun InstaButton(
         enabled = enabled,
         shape = shapes,
     ) {
-        InstaText(text = text, modifier = Modifier.fillMaxWidth().padding(4.dp))
+        InstaText(text = text, modifier = Modifier.fillMaxWidth().padding(4.dp),)
     }
 }
