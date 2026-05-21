@@ -74,7 +74,9 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel(), navigateToRegister
                 onValueChange = { loginViewModel.onPasswordChanged( it) }
             )
             Spacer(Modifier.height(12.dp))
-            InstaButton( text = stringResource(R.string.login_screen_button_login), onClick = {})
+            InstaButton( text = stringResource(R.string.login_screen_button_login), onClick = {
+                loginViewModel.onClickSelected()
+            })
             TextButton(
                 {}) {
                 InstaText(

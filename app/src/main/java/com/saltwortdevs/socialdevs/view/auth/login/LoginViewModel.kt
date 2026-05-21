@@ -2,11 +2,15 @@ package com.saltwortdevs.socialdevs.view.auth.login
 
 import android.util.Patterns
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.saltwortdevs.socialdevs.domain.usecase.LoginUseCase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
-class LoginViewModel: ViewModel() {
+class LoginViewModel(val loginUseCase : LoginUseCase): ViewModel() {
     private val _uiState = MutableStateFlow(LoginUiState())
     val uiState : StateFlow<LoginUiState> = this._uiState
 
@@ -22,6 +26,12 @@ class LoginViewModel: ViewModel() {
             state.copy(password = password)
         }
         verifyLogin()
+    }
+
+    fun onClickSelected() {
+        viewModelScope.launch(Dispatchers.IO) {
+            loginUseCase(_uiState.value.email, _uiState.value.password)
+        }
     }
 
     private fun verifyLogin() {
