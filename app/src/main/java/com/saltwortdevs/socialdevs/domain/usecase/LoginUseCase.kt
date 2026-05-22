@@ -9,6 +9,4 @@ class LoginUseCase(private val authRepository: AuthRepository) {
         }
         val response = authRepository.doLogin(user, password)
     }
-
-
 }
