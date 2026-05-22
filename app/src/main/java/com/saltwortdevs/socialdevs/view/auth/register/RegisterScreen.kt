@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.saltwortdevs.socialdevs.R
 import com.saltwortdevs.socialdevs.view.core.components.InstaText
@@ -29,7 +30,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.saltwortdevs.socialdevs.view.core.components.InstaButton
 
 @Composable
-fun RegisterScreen(registerViewModel : RegisterViewModel = viewModel(), navigateBack : () -> Unit) {
+fun RegisterScreen(registerViewModel : RegisterViewModel = hiltViewModel(), navigateBack : () -> Unit) {
     val ioState by registerViewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
     Scaffold (

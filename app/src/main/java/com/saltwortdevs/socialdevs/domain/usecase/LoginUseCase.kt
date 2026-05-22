@@ -1,12 +1,14 @@
 package com.saltwortdevs.socialdevs.domain.usecase
 
 import com.saltwortdevs.socialdevs.domain.repository.AuthRepository
+import javax.inject.Inject
 
-class LoginUseCase(private val authRepository: AuthRepository) {
-    operator fun invoke(user : String, password : String){
-        if (user.contains("@hotmail.com")) {
-            return
-        }
+
+class LoginUseCase @Inject constructor(private val authRepository: AuthRepository) {
+
+    suspend operator fun invoke(user: String, password: String) {
+        if (user.contains("@hotmail.com")) return
         val response = authRepository.doLogin(user, password)
     }
+
 }
