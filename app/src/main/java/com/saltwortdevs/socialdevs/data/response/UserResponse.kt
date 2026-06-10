@@ -2,14 +2,15 @@ package com.saltwortdevs.socialdevs.data.response
 
 import com.saltwortdevs.socialdevs.domain.entity.UserEntity
 import com.saltwortdevs.socialdevs.domain.entity.UserMode
+import kotlinx.serialization.Serializable
 
-
+@Serializable
 data class UserResponse(
     val userId : String,
     val name : String,
     val nickname: String,
-    val followers : Int,
-    val following : List<String>,
+    val followers : Int = 0,
+    val following : List<String> = emptyList(),
     val userType : Int
 )
 

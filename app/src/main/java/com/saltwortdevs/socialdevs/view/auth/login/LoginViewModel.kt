@@ -1,5 +1,6 @@
 package com.saltwortdevs.socialdevs.view.auth.login
 
+import android.util.Log
 import android.util.Patterns
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,6 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -33,7 +35,15 @@ class LoginViewModel @Inject constructor(val loginUseCase : LoginUseCase): ViewM
 
     fun onClickSelected() {
         viewModelScope.launch(Dispatchers.IO) {
-            loginUseCase(_uiState.value.email, _uiState.value.password)
+            val response = loginUseCase(_uiState.value.email, _uiState.value.password)
+
+            withContext(Dispatchers.Main) {
+                if (response != null){
+                    Log.i("LOGIN", "SUCCESS: ${response.name}")
+                } else {
+                    Log.i("LOGIN", "FAILED: ${response}")
+                }
+            }
         }
     }
 
@@ -51,7 +61,7 @@ class LoginViewModel @Inject constructor(val loginUseCase : LoginUseCase): ViewM
 }
 
 data class LoginUiState(
-    val email : String = "",
+    val email : String = "samguerrero",
     val password : String = "",
     val isLoading : Boolean = false,
     val isLoadingEnabled : Boolean = false
